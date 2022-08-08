@@ -1,3 +1,6 @@
 sources:
   - type: gitlab
     url: ""
+    config:
+      token: ""
+

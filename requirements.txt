@@ -1,6 +1,8 @@
 APScheduler==3.9.1
 fastapi==0.75.0
 PyYAML==5.4.1
+Schema==0.7.5
+python-gitlab==3.8.0
 
 # dev
 pylint==2.12.2
