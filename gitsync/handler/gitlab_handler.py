@@ -8,6 +8,7 @@ from gitsync.model.commit import Commit
 from gitsync.model.project import Project
 
 
+# TODO: add error handling (e.g., 401)
 class GitlabHandler(RepoHandler):
     def __init__(self, url: str, config: Optional[dict] = None):
         super().__init__(url, config)
