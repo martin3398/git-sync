@@ -30,11 +30,13 @@ class Application:
         self.logger.setLevel(self.config.get("loglevel", logging.WARNING))
 
     def run(self) -> None:
+        # TODO: implement loop logic
         for source in self.config["sources"]:
             class_name = handlers[source["type"]]
             handler = class_name(source.get("url", None), source.get("config", None))
 
             projects = handler.get_projects()
             for project in projects:
+                # TODO: use 'since', implement logic
                 self.elastic.add_commits(handler.get_commits(project).values(), project)
                 self.logger.info(f"Synced project '{project.full_name}'")

@@ -8,6 +8,7 @@ from gitsync.model.commit import Commit
 from gitsync.model.project import Project
 
 
+# TODO: make implementation more efficient (if possible)
 class GithubHandler(RepoHandler):
     def __init__(self, url: Optional[str], config: Optional[dict] = None):
         super().__init__(url, config)
@@ -15,6 +16,9 @@ class GithubHandler(RepoHandler):
         self.github = Github(config["token"])
         self.excluded = config.get("exclude", [])
         self.excluded_orgs = config.get("exclude_orgs", [])
+
+        # TODO: implement project buffer logic
+        self.project_buffer = {}
 
     def get_projects(self) -> list[Project]:
         projects = []
@@ -31,6 +35,7 @@ class GithubHandler(RepoHandler):
         return projects
 
     def get_commits(self, project: Project, since: Optional[datetime] = None) -> dict[str, Commit]:
+        # TODO: implement 'since' logic
         return {
             commit.sha: Commit(
                 commit.sha,

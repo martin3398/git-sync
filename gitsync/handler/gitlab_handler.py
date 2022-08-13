@@ -26,6 +26,7 @@ class GitlabHandler(RepoHandler):
         ]
 
     def get_commits(self, project: Project, since: Optional[datetime] = None) -> dict[str, Commit]:
+        # TODO: implement 'since' logic
         return {
             commit.id: Commit(commit.id, commit.title, commit.author_name, commit.parent_ids)
             for commit in self.gitlab.projects.get(project.id).commits.list(all=True, since=since)
