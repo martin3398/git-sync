@@ -32,7 +32,7 @@ class Application:
     def run(self) -> None:
         for source in self.config["sources"]:
             class_name = handlers[source["type"]]
-            handler = class_name(source["url"], source.get("config", None))
+            handler = class_name(source.get("url", None), source.get("config", None))
 
             projects = handler.get_projects()
             for project in projects:

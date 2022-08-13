@@ -4,6 +4,7 @@ PyYAML==5.4.1
 Schema==0.7.5
 python-gitlab==3.8.0
 elasticsearch==8.3.3
+PyGithub==1.55
 
 # dev
 pylint==2.14.5

@@ -7,7 +7,7 @@ from gitsync.model.project import Project
 
 
 class RepoHandler(ABC):
-    def __init__(self, url: str, config: Optional[dict] = None):
+    def __init__(self, url: Optional[str], config: Optional[dict] = None):
         pass
 
     @abstractmethod

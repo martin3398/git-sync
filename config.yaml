@@ -3,6 +3,13 @@ sources:
     url: ""
     config:
       token: ""
+  - type: github
+    config:
+      token: ""
+      exclude:
+        - exluded_repo
+      exclude_orgs:
+        - excluded_org
 elastic:
   url: https://localhost:9200
   username: user

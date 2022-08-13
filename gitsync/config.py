@@ -5,7 +5,7 @@ config_schema = Schema(
         "sources": [
             {
                 "type": str,
-                "url": str,
+                Optional("url"): str,
                 Optional("config"): object,
             }
         ],
