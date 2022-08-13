@@ -16,6 +16,7 @@ config_schema = Schema(
             Optional("cert_location"): str,
             "index": str,
         },
+        Optional("loglevel"): str,
     },
     ignore_extra_keys=True,
 )

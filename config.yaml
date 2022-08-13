@@ -9,3 +9,4 @@ elastic:
   password: pass
   cert_location: cert/http_ca.crt
   index: gitsync
+loglevel: INFO

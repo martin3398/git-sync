@@ -1,3 +1,5 @@
+import logging
+
 import yaml
 from yaml import FullLoader
 
@@ -18,13 +20,21 @@ class Application:
 
         self.elastic = ElasticConnection(**self.config["elastic"])
 
+        self.logger = None
+        self.init_logger()
+
+    def init_logger(self):
+        logging.basicConfig()
+
+        self.logger = logging.getLogger("gitsync")
+        self.logger.setLevel(self.config.get("loglevel", logging.WARNING))
+
     def run(self) -> None:
         for source in self.config["sources"]:
-            print(source)
             class_name = handlers[source["type"]]
             handler = class_name(source["url"], source.get("config", None))
 
             projects = handler.get_projects()
-            print(projects)
             for project in projects:
-                print(handler.get_commits(project))
+                self.elastic.add_commits(handler.get_commits(project).values(), project)
+                self.logger.info(f"Synced project '{project.full_name}'")

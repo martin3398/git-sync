@@ -15,12 +15,13 @@ class GitlabHandler(RepoHandler):
 
         token = config.get("token", None) if config else None
 
+        self.url = url
         self.gitlab = Gitlab(url, private_token=token)
         self.gitlab.auth()
 
     def get_projects(self) -> list[Project]:
         return [
-            Project(project.id, project.name)
+            Project(project.id, project.name, f"gitlab\\{self.url}\\{project.name}")
             for project in self.gitlab.projects.list(iterator=True, membership=True, all=True)
         ]
 

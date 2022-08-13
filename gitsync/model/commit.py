@@ -1,3 +1,6 @@
+from typing import Any
+
+
 class Commit:
     def __init__(self, hash: str, title: str, author: str, parent_hashs: list[str]):
         self.hash = hash
