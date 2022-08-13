@@ -3,4 +3,9 @@ sources:
     url: ""
     config:
       token: ""
-
+elastic:
+  url: https://localhost:9200
+  username: user
+  password: pass
+  cert_location: cert/http_ca.crt
+  index: gitsync

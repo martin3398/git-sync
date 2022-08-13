@@ -8,7 +8,14 @@ config_schema = Schema(
                 "url": str,
                 Optional("config"): object,
             }
-        ]
+        ],
+        "elastic": {
+            "url": str,
+            "username": str,
+            "password": str,
+            Optional("cert_location"): str,
+            "index": str,
+        },
     },
     ignore_extra_keys=True,
 )

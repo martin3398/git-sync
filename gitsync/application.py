@@ -2,6 +2,7 @@ import yaml
 from yaml import FullLoader
 
 from gitsync import config
+from gitsync.database.elastic_connection import ElasticConnection
 from gitsync.handler import handlers
 
 
@@ -14,6 +15,8 @@ class Application:
             self.config: dict = config.default_config
 
         config.validate(self.config)
+
+        self.elastic = ElasticConnection(**self.config["elastic"])
 
     def run(self) -> None:
         for source in self.config["sources"]:
