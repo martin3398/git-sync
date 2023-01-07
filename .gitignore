@@ -12,3 +12,6 @@ cert/
 
 # todo files
 todo.*
+
+# config file
+config.yaml
